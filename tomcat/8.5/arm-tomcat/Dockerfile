@@ -1,0 +1,12 @@
+FROM openjdk:11-jdk-buster
+
+ENV CATALINA_HOME /usr/local/tomcat
+ENV PATH $CATALINA_HOME/bin:$PATH
+RUN mkdir -p "$CATALINA_HOME"
+WORKDIR $CATALINA_HOME
+
+ENV TOMCAT_MAJOR 8
+ENV TOMCAT_VERSION 8.5.73
+
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
