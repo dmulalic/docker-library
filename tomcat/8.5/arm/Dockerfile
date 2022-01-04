@@ -14,10 +14,10 @@ RUN set -eux; \
   groupadd tomcat; \
   useradd -s /bin/false -g tomcat -d $CATALINA_HOME tomcat; \
   \
-  curl -fsSL https://drive.google.com/file/d/1wFVBSL1VaUA2pKAzZxOrrful_dW8Xpac/view?usp=sharing -o tomcat.tar.gz; \
+  curl -fsSL https://drive.google.com/file/d/1wFVBSL1VaUA2pKAzZxOrrful_dW8Xpac -o tomcat.tar.gz; \
   \
-  tar xzvf apache-tomcat.tar.gz -C $CATALINA_HOME --strip-components=1; \
-  rm -f apache-tomcat.tar.gz; \
+  tar xzvf tomcat.tar.gz -C $CATALINA_HOME --strip-components=1; \
+  rm -f tomcat.tar.gz; \
   \
   chgrp -R tomcat .; \
   chmod -R g+r conf; \
