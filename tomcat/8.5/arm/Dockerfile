@@ -14,10 +14,14 @@ RUN set -eux; \
   groupadd tomcat; \
   useradd -s /bin/false -g tomcat -d $CATALINA_HOME tomcat; \
   \
-  curl -fsSL https://drive.google.com/file/d/1wFVBSL1VaUA2pKAzZxOrrful_dW8Xpac/view?usp=sharing -o tomcat.tar.gz; \
+  GDRIVE_FILE_ID=1VQ82S_GntuAtEx4pM8pYeJvPzCKL8erN; \
+  DEST_PATH=tomcat.tar.gz; \
+  curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${GDRIVE_FILE_ID}" > /dev/null; \
+  curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${GDRIVE_FILE_ID}" -o ${DEST_PATH}; \
+  rm -f cookie; \
   \
-  tar xzvf apache-tomcat.tar.gz -C $CATALINA_HOME --strip-components=1; \
-  rm -f apache-tomcat.tar.gz; \
+  tar xzvf tomcat.tar.gz -C $CATALINA_HOME --strip-components=1; \
+  rm -f tomcat.tar.gz; \
   \
   chgrp -R tomcat .; \
   chmod -R g+r conf; \
