@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-buster
+FROM demu/arm-java11:22.1.4.1
 
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
@@ -7,6 +7,24 @@ WORKDIR $CATALINA_HOME
 
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.5.73
+
+RUN set -eux; \
+	\
+# Create a new tomcat group
+  groupadd tomcat; \
+  useradd -s /bin/false -g tomcat -d $CATALINA_HOME tomcat; \
+  \
+  curl -fsSL https://drive.google.com/file/d/1wFVBSL1VaUA2pKAzZxOrrful_dW8Xpac/view?usp=sharing -o tomcat.tar.gz; \
+  \
+  tar xzvf apache-tomcat.tar.gz -C $CATALINA_HOME --strip-components=1; \
+  rm -f apache-tomcat.tar.gz; \
+  \
+  chgrp -R tomcat .; \
+  chmod -R g+r conf; \
+  chmod g+x conf; \
+  chmod -R +rX .; \
+	chmod 777 logs temp work; \
+  chown -R tomcat webapps/ work/ temp/ logs/
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
