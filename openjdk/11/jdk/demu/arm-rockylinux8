@@ -1,0 +1,20 @@
+FROM demu/arm-rockylinux:8.5-22.01.02-base
+
+LABEL name="dmulalic Java 11 image on Rocky Linux 8" \    
+      maintainer="dmulalic" \\
+      release="1" \
+      summary="A Java 11 image based on Rocky Linux 8" 
+
+# Change to user root to install jdk, cant install it with any other user
+# USER root 
+RUN yum update -y && \
+    yum install -y java-11-openjdk java-11-openjdk-devel && \
+    yum clean all
+
+ENV JAVA_HOME /usr/lib/jvm/java
+
+# Again using non-root user i.e. stakater as set in base image
+# USER 10001
+
+# Define default command, can be overriden by passing an argument when running the container
+CMD ["bash"]
