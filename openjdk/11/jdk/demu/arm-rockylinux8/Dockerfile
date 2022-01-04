@@ -1,7 +1,7 @@
 FROM demu/arm-rockylinux:8.5-22.01.02-base
 
 LABEL name="dmulalic Java 11 image on Rocky Linux 8" \    
-      maintainer="dmulalic" \\
+      maintainer="dmulalic" \
       release="1" \
       summary="A Java 11 image based on Rocky Linux 8" 
 
