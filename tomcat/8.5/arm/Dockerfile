@@ -14,7 +14,6 @@ RUN set -eux; \
   groupadd tomcat; \
   useradd -s /bin/false -g tomcat -d $CATALINA_HOME tomcat; \
   \
-# https://drive.google.com/uc?id=[FILEID]&export=download repacing "[FILEID]" with https://drive.google.com/file/d/1wFVBSL1VaUA2pKAzZxOrrful_dW8Xpac/view?usp=sharing
   curl -L "https://drive.google.com/uc?id=1wFVBSL1VaUA2pKAzZxOrrful_dW8Xpac&export=download" > tomcat.tar.gz; \
   \
   tar xzvf tomcat.tar.gz -C $CATALINA_HOME --strip-components=1; \
