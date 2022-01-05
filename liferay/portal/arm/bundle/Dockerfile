@@ -1,0 +1,3 @@
+FROM demu/arm-tomcat8:22.1.4.1
+
+EXPOSE 8000 8009 8080 11311
