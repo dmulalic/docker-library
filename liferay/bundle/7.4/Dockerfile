@@ -1,7 +1,7 @@
 FROM demu/java11:22.1.5ga
 
 ENV LIFERAY_HOME /opt/liferay
-ENV PATH $LIFERAY_HOME/bin:$PATH
+ENV PATH $LIFERAY_HOME/tomcat-9.0.56/bin:$PATH
 RUN mkdir -p "$LIFERAY_HOME"
 
 RUN set -eux; \
