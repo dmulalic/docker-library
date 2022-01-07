@@ -1,4 +1,4 @@
-FROM demu/arm-java11:22.1.4.1
+FROM demu/java11:22.1.5ga
 
 ENV LIFERAY_HOME /opt/liferay
 ENV PATH $LIFERAY_HOME/bin:$PATH
