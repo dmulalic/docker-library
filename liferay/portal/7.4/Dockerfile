@@ -8,13 +8,13 @@ WORKDIR $LIFERAY_HOME/tomcat/webapps/ROOT
 RUN set -eux; \
 	\
 # Create a new tomcat group
-  groupadd liferay; \
-  useradd -s /bin/false -g liferay -d $LIFERAY_HOME liferay; \
-  \
-  rm -rf ./*; \
-  curl -o liferay-ce-portal.war -L https://github.com/liferay/liferay-portal/releases/download/7.4.3.5-ga5/liferay-ce-portal-$LIFERAY_DL_VERSION.war; \
-  jar -xvf liferay-ce-portal.war; \
-# rm liferay-ce-portal.war 
+	groupadd liferay; \
+	useradd -s /bin/false -g liferay -d $LIFERAY_HOME liferay; \
+	\
+	rm -rf ./*; \
+	curl -o liferay-ce-portal.war -L https://github.com/liferay/liferay-portal/releases/download/7.4.3.5-ga5/liferay-ce-portal-$LIFERAY_DL_VERSION.war; \
+	jar -xvf liferay-ce-portal.war; \
+	rm liferay-ce-portal.war 
   
 COPY bin/* /usr/local/tomcat/bin/
 
