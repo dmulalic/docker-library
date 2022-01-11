@@ -1,4 +1,4 @@
-FROM demu/java11:22.1.5ga
+FROM demu/tomcat8.5:22.1.11dev
 
 ENV LIFERAY_HOME /opt/liferay
 ENV PATH $LIFERAY_HOME/tomcat-9.0.56/bin:$PATH
