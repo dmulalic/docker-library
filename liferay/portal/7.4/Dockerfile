@@ -13,6 +13,8 @@ RUN set -eux; \
   useradd -s /bin/false -g liferay -d $LIFERAY_HOME liferay; \
   \
   curl -o liferay-ce-portal.war -L https://github.com/liferay/liferay-portal/releases/download/7.4.3.5-ga5/liferay-ce-portal-$LIFERAY_DL_VERSION.war
+  
+COPY bin/* /user/bin/
 
 EXPOSE 8000 8009 8080 11311
 
