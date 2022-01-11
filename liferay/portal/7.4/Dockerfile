@@ -19,7 +19,7 @@ RUN set -eux; \
   jar -xvf $LIFERAY_HOME/tomcat/webapps/ROOT/liferay-ce-portal.war; \
   rm  $LIFERAY_HOME/tomcat/webapps/ROOT/liferay-ce-portal.war 
   
-COPY bin/* /usr/local/tomcat/bin
+COPY bin/* /usr/local/tomcat/bin/
 
 EXPOSE 8000 8009 8080 11311
 
