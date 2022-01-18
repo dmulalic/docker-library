@@ -1,4 +1,4 @@
-FROM demu/java11:22.1.5ga
+FROM demu/java11
 
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
