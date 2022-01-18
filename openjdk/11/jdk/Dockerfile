@@ -1,4 +1,4 @@
-FROM demu/rockylinux:8.5-22.1.5ga
+FROM demu/rockylinux8.5
 
 LABEL name="Java 11 image on Rocky Linux 8.5" \    
       maintainer="demu" \
