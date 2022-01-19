@@ -79,7 +79,7 @@ RUN set -eux; \
 	mv liferay-ce-portal-osgi-7.4.3.5-ga5 osgi; \
 	rm osgi.zip
   
-COPY omnibus/0.1/assets/liferay/7.4/bin/* $CATALINA_HOME/bin/
+COPY omnibus/0.1/assets/liferay/7.4/bin/* /omnibus/tomcat/bin/
 
 EXPOSE 8080
 
