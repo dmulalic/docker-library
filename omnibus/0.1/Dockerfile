@@ -102,7 +102,8 @@ RUN set -eux; \
 	unzip keycloak.zip; \
 	mv keycloak-16.1.0 keycloak; \
 	rm keycloak.zip; \
-	/omnibus/keycloak/bin/add-user-keycloak.sh -u admin -p admin
+	/omnibus/keycloak/bin/add-user-keycloak.sh -u admin -p admin; \
+	sed -i 's|jboss.http.port:8080|jboss.http.port:8090|' /omnibus/keycloak/standalone/configuration/standalone.xml
 	# /omnibus/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=10
 
 # add healthcheck script
