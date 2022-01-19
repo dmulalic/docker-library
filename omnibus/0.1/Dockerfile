@@ -81,6 +81,15 @@ RUN set -eux; \
   
 COPY assets/liferay/7.4/bin/* /omnibus/tomcat/bin/
 
+##### GEOSERVER #####
+
+WORKDIR $LIFERAY_HOME/tomcat/webapps/
+RUN set -eux; \
+	\
+	curl -o geoserver.zip -Lhttps://github.com/dmulalic/docker-library/releases/download/v0.1-dev/geoserver-2.20.1-war.zip; \
+	unzip geoserver.zip; \
+	rm geoserver.zip
+
 EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
