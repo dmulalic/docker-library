@@ -105,6 +105,12 @@ RUN set -eux; \
 	/omnibus/keycloak/bin/add-user-keycloak.sh -u admin -p admin; \
 	/omnibus/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=10
 
+# add healthcheck script
+# COPY docker-healthcheck.sh /
+
+# add launch script
+COPY docker-entrypoint.sh /
+
 EXPOSE 8080 8090
 
-CMD ["catalina.sh", "run"]
+CMD ["/docker-entrypoint.sh"]
