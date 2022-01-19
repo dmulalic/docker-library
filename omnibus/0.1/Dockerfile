@@ -102,8 +102,8 @@ RUN set -eux; \
 	unzip keycloak.zip; \
 	mv keycloak-16.1.0 keycloak; \
 	rm keycloak.zip; \
-	/omnibus/keycloak/bin/add-user-keycloak.sh -u admin -p admin; \
-	/omnibus/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=10
+	/omnibus/keycloak/bin/add-user-keycloak.sh -u admin -p admin
+	# /omnibus/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=10
 
 # add healthcheck script
 # COPY docker-healthcheck.sh /
