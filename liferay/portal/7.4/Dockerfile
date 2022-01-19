@@ -1,4 +1,4 @@
-FROM demu/tomcat8.5:22.1.11dev
+FROM demu/tomcat8.5
 
 ENV LIFERAY_HOME /usr/local
 ENV PATH $LIFERAY_HOME/tomcat/bin:$PATH
@@ -19,8 +19,10 @@ RUN set -eux; \
 WORKDIR $LIFERAY_HOME
 RUN set -eux; \
 	\
-# Create a new tomcat group
-	curl -o liferay-ce-portal-osgi.zip -L https://github.com/liferay/liferay-portal/releases/download/7.4.3.5-ga5/liferay-ce-portal-osgi-7.4.3.5-ga5-20211221192828235.zip; \
+	curl -o osgi.zip -L https://github.com/liferay/liferay-portal/releases/download/7.4.3.5-ga5/liferay-ce-portal-osgi-7.4.3.5-ga5-20211221192828235.zip; \
+	unzip osgi.zip; \
+	mv liferay-ce-portal-osgi-7.4.3.5-ga5 osgi; \
+	rm osgi.zip
   
 COPY bin/* /usr/local/tomcat/bin/
 
