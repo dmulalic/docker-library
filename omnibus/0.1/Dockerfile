@@ -89,7 +89,21 @@ RUN set -eux; \
 	curl -o geoserver.zip -L https://github.com/dmulalic/docker-library/releases/download/v0.1-dev/geoserver-2.20.1-war.zip; \
 	unzip geoserver.zip; \
 	rm geoserver.zip
+	
+##### KEYCLOAK ######
 
-EXPOSE 8080
+ENV KEYCLOAK_HOME /omnibus/keycloak
+ENV KC_HOME /omnibus/keycloak
+RUN mkdir -p "$KEYCLOAK_HOME"
+WORKDIR /omnibus
+RUN set -eux; \
+	\
+	curl -o keycloak.zip -L https://github.com/keycloak/keycloak/releases/download/16.1.0/keycloak-16.1.0.zip; \
+	unzip keycloak.zip; \
+	rm keycloak.zip; \
+	/omnibus/keycloak/add-user-keycloak.sh -u admin -p admin; \
+	/omnibus/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=10
+
+EXPOSE 8080 8090
 
 CMD ["catalina.sh", "run"]
