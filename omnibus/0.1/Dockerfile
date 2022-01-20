@@ -107,16 +107,6 @@ RUN set -eux; \
 	sed -i 's|jboss.http.port:8080|jboss.http.port:8090|' /omnibus/keycloak/standalone/configuration/standalone.xml
 	# /omnibus/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=10
 
-##### ATHEOS ######
-RUN set -eux; \
-        \
-        dnf -y install httpd && \
-        dnf -y install php && \
-	dnf -y install php-mbstring; \
-	mkdir /atheos; \
-	git clone https://github.com/atheos/atheos /atheos; \
-	touch /atheos/config.php
-
 # add healthcheck script
 # COPY docker-healthcheck.sh /
 
