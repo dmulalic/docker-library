@@ -15,6 +15,7 @@ RUN set -eux; \
 	dnf -y install vim && \
 	dnf -y install tar && \
 	dnf -y install unzip; \
+	dnf -y install git; \
 	sed -i "s|#set bell-style none|set bell-style none|g" /etc/inputrc
 	
 ##### JAVA 11 #####
@@ -105,6 +106,16 @@ RUN set -eux; \
 	/omnibus/keycloak/bin/add-user-keycloak.sh -u admin -p admin; \
 	sed -i 's|jboss.http.port:8080|jboss.http.port:8090|' /omnibus/keycloak/standalone/configuration/standalone.xml
 	# /omnibus/keycloak/bin/standalone.sh -Djboss.socket.binding.port-offset=10
+
+##### ATHEOS ######
+RUN set -eux; \
+        \
+        dnf -y install httpd && \
+        dnf -y install php && \
+	dnf -y install php-mbstring; \
+	mkdir /atheos; \
+	git clone https://github.com/atheos/atheos /atheos; \
+	touch /atheos/config.php
 
 # add healthcheck script
 # COPY docker-healthcheck.sh /
